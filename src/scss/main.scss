@@ -1,0 +1,51 @@
+@import "../../node_modules/normalize.css/normalize.css";
+@import "mixins.scss";
+@import "variables.scss";
+@import "typography.scss";
+@import "global.scss";
+
+@keyframes colorize {
+    100% {
+        filter: grayscale(30%);
+    }
+}
+
+body {
+    height: 300vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    .beach {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        filter: grayscale(100%);
+
+        &.beach-a {
+            background-image: url('../images/beach1.jpg');
+            animation: colorize 2000ms ease 500ms forwards;
+        }
+
+        &.beach-b {
+            background-image: url('../images/beach2.jpg');
+            animation: colorize 2000ms ease 2500ms forwards;
+        }
+
+        &.beach-c {
+            background-image: url('../images/beach3.jpg');
+            animation: colorize 2000ms ease 4500ms forwards;
+        }
+    }
+
+    @include tablet-up {
+        height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        .beach {
+            &.beach-c {
+                grid-column: 1/3;
+            }
+        }
+    }
+}
